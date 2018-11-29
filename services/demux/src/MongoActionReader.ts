@@ -64,15 +64,12 @@ export class MongoActionReader extends AbstractActionReader {
   }
 
   private async getInlineActions(block: MongoBlock) {
-
     const inlineTrxs = block.actions.filter((action) =>
       (this.inlineListeners.indexOf(action.type) >= 0),
     )
 
     if (inlineTrxs.length) {
-
       console.info("getting inline trxs")
-
       const inlineTrxsIds = inlineTrxs.map((trx) => trx.payload.transactionId)
       const transactionTraces = await this.mongodb!
         .collection("transaction_traces")

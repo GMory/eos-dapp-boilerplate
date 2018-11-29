@@ -1,11 +1,11 @@
-const logGreeting = (_: any, payload: any) => {
-  console.info("Greet invoked ===> Payload:\n", payload)
+const logAccountAdd = (_: any, payload: any) => {
+  console.info("=========================\nACCOUNT CREATED ===> Payload:\n=========================\n\n", payload)
 }
 
 const effects = [
   {
-    actionType: "eoslocal::greet",
-    effect: logGreeting,
+    actionType: "tradestuff::acctadd",
+    effect: logAccountAdd,
   },
 ]
 

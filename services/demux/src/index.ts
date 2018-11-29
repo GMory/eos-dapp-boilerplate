@@ -39,7 +39,7 @@ const init = async () => {
   )
 
   const inlineListeners = [
-    "eoslocal::greet",
+    "tradestuff::acctadd",
   ]
 
   const actionReader = new MongoActionReader(
