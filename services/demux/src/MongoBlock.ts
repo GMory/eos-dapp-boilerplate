@@ -19,8 +19,6 @@ export class MongoBlock implements Block {
 
     const newActions = this.actions.map((action) => {
 
-      console.info(transactionTraces)
-
       const transaction = transactionTraces.find((trx: any) =>
         trx.id === action.payload.transactionId)
 

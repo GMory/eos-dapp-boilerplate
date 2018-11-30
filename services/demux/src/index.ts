@@ -4,8 +4,10 @@ import massive from "massive"
 // import monitor from "pg-monitor"
 import { MongoActionReader } from "./MongoActionReader"
 
-import { effects } from "./effects"
 import { updaters } from "./updaters"
+// import { effects } from "./effects"
+
+const effects: any = []
 
 console.info("==== Starting demux ====")
 
@@ -40,6 +42,14 @@ const init = async () => {
 
   const inlineListeners = [
     "tradestuff::acctadd",
+    "tradestuff::acctupdate",
+    "tradestuff::acctdel",
+    "tradestuff::catadd",
+    "tradestuff::catupdate",
+    "tradestuff::catdel",
+    "tradestuff::condadd",
+    "tradestuff::condupdate",
+    "tradestuff::conddel",
   ]
 
   const actionReader = new MongoActionReader(

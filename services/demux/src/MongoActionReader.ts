@@ -69,7 +69,7 @@ export class MongoActionReader extends AbstractActionReader {
     )
 
     if (inlineTrxs.length) {
-      console.info("getting inline trxs")
+      console.info("Inline Actions Found")
       const inlineTrxsIds = inlineTrxs.map((trx) => trx.payload.transactionId)
       const transactionTraces = await this.mongodb!
         .collection("transaction_traces")
