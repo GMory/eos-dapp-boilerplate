@@ -50,6 +50,13 @@ const init = async () => {
     "tradestuff::condadd",
     "tradestuff::condupdate",
     "tradestuff::conddel",
+    "tradestuff::likeadd",
+    "tradestuff::likedel",
+    "tradestuff::stuffadd",
+    "tradestuff::stuffupdate",
+    "tradestuff::stuffdel",
+    "tradestuff::wantadd",
+    "tradestuff::wantdel",
   ]
 
   const actionReader = new MongoActionReader(

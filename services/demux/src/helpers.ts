@@ -8,4 +8,23 @@ const getInlineActionResult = async (inlineActions: any, name: string, value: st
   return result
 }
 
-export { getInlineActionResult }
+const getAccountByUsername = async (db: any, username: any) => {
+  return db.accounts.findOne({ username: username })
+}
+
+const logger = (info: any) => {
+  console.log('')
+  console.log('=')
+  console.log('===')
+  console.log('======')
+  console.log('============ [ LOGGER ] ============')
+  console.log('')
+  console.log('DATA', info)
+  console.log('')
+  console.log('====================================')
+  console.log('======')
+  console.log('===')
+  console.log('=')
+  console.log('')
+}
+export { getInlineActionResult, getAccountByUsername, logger }

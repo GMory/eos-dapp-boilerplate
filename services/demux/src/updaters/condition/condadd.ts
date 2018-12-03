@@ -4,7 +4,7 @@ import { getInlineActionResult } from '../../helpers'
 const condadd = async (db: any, payload: any, blockInfo: BlockInfo) => {
 
   const id = await getInlineActionResult(payload.inlineActions, 'generateid', 'id')
-
+  
   const data = {
     id: id,
     name: payload.data.name,

@@ -17,8 +17,6 @@ const condupdate = async (db: any, payload: any, blockInfo: BlockInfo) => {
   
   // Update
   console.log('=========== [ UPDATING CONDITION ] ===========')
-  console.log('CONDITION', payload.data.condition_id)
-  console.log('--')
   console.log('DATA', data)
   console.log('============================================')
   await db.conditions.update({ id: payload.data.condition_id }, data)

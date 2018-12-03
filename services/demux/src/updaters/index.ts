@@ -9,6 +9,13 @@ import { catdel } from './category/catdel'
 import { condadd } from './condition/condadd'
 import { condupdate } from './condition/condupdate'
 import { conddel } from './condition/conddel'
+import { likeadd } from './like/likeadd'
+import { likedel } from './like/likedel'
+import { stuffadd } from './stuff/stuffadd'
+import { stuffupdate } from './stuff/stuffupdate'
+import { stuffdel } from './stuff/stuffdel'
+import { wantadd } from './want/wantadd'
+import { wantdel } from './want/wantdel'
 
 const updaters = [
   {
@@ -46,6 +53,34 @@ const updaters = [
   {
     actionType: `${contractName}::conddel`,
     updater: conddel,
+  },
+  {
+    actionType: `${contractName}::likeadd`,
+    updater: likeadd,
+  },
+  {
+    actionType: `${contractName}::likedel`,
+    updater: likedel,
+  },
+  {
+    actionType: `${contractName}::stuffadd`,
+    updater: stuffadd,
+  },
+  {
+    actionType: `${contractName}::stuffupdate`,
+    updater: stuffupdate,
+  },
+  {
+    actionType: `${contractName}::stuffdel`,
+    updater: stuffdel,
+  },
+  {
+    actionType: `${contractName}::wantadd`,
+    updater: wantadd,
+  },
+  {
+    actionType: `${contractName}::wantdel`,
+    updater: wantdel,
   }
 ]
 
