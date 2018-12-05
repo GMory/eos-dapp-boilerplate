@@ -74,7 +74,7 @@ CREATE TABLE offers (
   deleted_at TIMESTAMP NULL
 );
 
-CREATE TABLE offerStuff (
+CREATE TABLE offerstuff (
   id SERIAL PRIMARY KEY,
   offer_id INT NOT NULL,
   stuff_id INT NOT NULL,

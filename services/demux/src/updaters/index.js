@@ -16,6 +16,7 @@ const likeadd = require('./like/likeadd')
 const likedel = require('./like/likedel')
 
 const offeradd = require('./offer/offeradd')
+const offerdecl = require('./offer/offerdecl')
 
 const stuffadd = require('./stuff/stuffadd')
 const stuffupdate = require('./stuff/stuffupdate')
@@ -72,6 +73,10 @@ const updaters = [
   {
     actionType: `${contractName}::offeradd`,
     updater: offeradd,
+  },
+  {
+    actionType: `${contractName}::offerdecl`,
+    updater: offerdecl,
   },
   {
     actionType: `${contractName}::stuffadd`,

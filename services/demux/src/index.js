@@ -50,6 +50,7 @@ const init = async () => {
     "tradestuff::likeadd",
     "tradestuff::likedel",
     "tradestuff::offeradd",
+    "tradestuff::offerdecl",
     "tradestuff::stuffadd",
     "tradestuff::stuffupdate",
     "tradestuff::stuffdel",

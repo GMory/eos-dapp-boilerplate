@@ -1,0 +1,12 @@
+const categoryRepository = require('../../repositories/category')
+const helpers = require('../../helpers')
+
+const catupdate = async (db, payload, blockInfo) => {
+  // update the category
+  const category = await new categoryRepository(db).update(payload, blockInfo)
+
+  // log it to the console
+  helpers.logger(category)
+}
+
+module.exports = catupdate
