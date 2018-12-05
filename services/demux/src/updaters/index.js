@@ -1,21 +1,28 @@
 const contractName = "tradestuff"
 
-import { acctadd } from './account/acctadd'
-import { acctupdate } from './account/acctupdate'
-import { acctdel } from './account/acctdel'
-import { catadd } from './category/catadd'
-import { catupdate } from './category/catupdate'
-import { catdel } from './category/catdel'
-import { condadd } from './condition/condadd'
-import { condupdate } from './condition/condupdate'
-import { conddel } from './condition/conddel'
-import { likeadd } from './like/likeadd'
-import { likedel } from './like/likedel'
-import { stuffadd } from './stuff/stuffadd'
-import { stuffupdate } from './stuff/stuffupdate'
-import { stuffdel } from './stuff/stuffdel'
-import { wantadd } from './want/wantadd'
-import { wantdel } from './want/wantdel'
+const acctadd = require('./account/acctadd')
+const acctupdate = require('./account/acctupdate')
+const acctdel = require('./account/acctdel')
+
+const catadd = require('./category/catadd')
+const catupdate = require('./category/catupdate')
+const catdel = require('./category/catdel')
+
+const condadd = require('./condition/condadd')
+const condupdate = require('./condition/condupdate')
+const conddel = require('./condition/conddel')
+
+const likeadd = require('./like/likeadd')
+const likedel = require('./like/likedel')
+
+const offeradd = require('./offer/offeradd')
+
+const stuffadd = require('./stuff/stuffadd')
+const stuffupdate = require('./stuff/stuffupdate')
+const stuffdel = require('./stuff/stuffdel')
+
+const wantadd = require('./want/wantadd')
+const wantdel = require('./want/wantdel')
 
 const updaters = [
   {
@@ -63,6 +70,10 @@ const updaters = [
     updater: likedel,
   },
   {
+    actionType: `${contractName}::offeradd`,
+    updater: offeradd,
+  },
+  {
     actionType: `${contractName}::stuffadd`,
     updater: stuffadd,
   },
@@ -84,4 +95,4 @@ const updaters = [
   }
 ]
 
-export { updaters }
+module.exports = { updaters }

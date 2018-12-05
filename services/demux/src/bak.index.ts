@@ -52,6 +52,7 @@ const init = async () => {
     "tradestuff::conddel",
     "tradestuff::likeadd",
     "tradestuff::likedel",
+    "tradestuff::offeradd",
     "tradestuff::stuffadd",
     "tradestuff::stuffupdate",
     "tradestuff::stuffdel",

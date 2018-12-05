@@ -3,7 +3,7 @@ module.exports = {
     {
       name: "demux",
       exec_interpreter: "ts-node",
-      script: "./src/index.ts",
+      script: "./src/index.js",
       restart_delay: 5000,
       min_uptime: "20s",
       max_restarts: 9999,

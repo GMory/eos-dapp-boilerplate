@@ -1,8 +1,18 @@
 const getInlineActionResult = async (inlineActions: any, name: string, value: string) => {
-  var result = null
+  let result: any = []
   inlineActions.forEach((action: any) => {
     if (action.act.name === name) {
       result = action.act.data[value]
+    }
+  })
+  return result
+}
+
+const getInlineAction = async (inlineActions: any, name: string) => {
+  let result: any = []
+  inlineActions.forEach((action: any) => {
+    if (action.act.name === name) {
+      result.push(action.act.data)
     }
   })
   return result
@@ -19,7 +29,7 @@ const logger = (info: any) => {
   console.log('======')
   console.log('============ [ LOGGER ] ============')
   console.log('')
-  console.log('DATA', info)
+  console.log(info)
   console.log('')
   console.log('====================================')
   console.log('======')
@@ -27,4 +37,4 @@ const logger = (info: any) => {
   console.log('=')
   console.log('')
 }
-export { getInlineActionResult, getAccountByUsername, logger }
+export { getInlineActionResult, getInlineAction, getAccountByUsername, logger }

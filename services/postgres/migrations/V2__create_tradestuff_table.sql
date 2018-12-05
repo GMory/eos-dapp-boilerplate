@@ -62,3 +62,22 @@ CREATE TABLE stuff (
   updated_at TIMESTAMP NULL,
   deleted_at TIMESTAMP NULL
 );
+
+CREATE TABLE offers (
+  id SERIAL PRIMARY KEY,
+  creator_id INT NOT NULL,
+  recipient_id INT NOT NULL,
+  recipient_response INT NOT NULL,
+  expires_at TIMESTAMP NULL,
+  created_at TIMESTAMP NULL,
+  updated_at TIMESTAMP NULL,
+  deleted_at TIMESTAMP NULL
+);
+
+CREATE TABLE offerStuff (
+  id SERIAL PRIMARY KEY,
+  offer_id INT NOT NULL,
+  stuff_id INT NOT NULL,
+  created_at TIMESTAMP NULL,
+  deleted_at TIMESTAMP NULL
+);
