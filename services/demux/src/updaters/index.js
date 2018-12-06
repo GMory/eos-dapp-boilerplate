@@ -1,5 +1,7 @@
+// Contract
 const contractName = "tradestuff"
 
+// Updaters
 const acctadd = require('./account/acctadd')
 const acctupdate = require('./account/acctupdate')
 const acctdel = require('./account/acctdel')
@@ -15,12 +17,18 @@ const conddel = require('./condition/conddel')
 const likeadd = require('./like/likeadd')
 const likedel = require('./like/likedel')
 
+const offeraccpt = require('./offer/offeraccpt')
 const offeradd = require('./offer/offeradd')
 const offerdecl = require('./offer/offerdecl')
+const offerdel = require('./offer/offerdel')
+const offerrenew = require('./offer/offerrenew')
 
 const stuffadd = require('./stuff/stuffadd')
 const stuffupdate = require('./stuff/stuffupdate')
 const stuffdel = require('./stuff/stuffdel')
+
+const stuffsent = require('./trade/stuffsent')
+const stuffrecv = require('./trade/stuffrecv')
 
 const wantadd = require('./want/wantadd')
 const wantdel = require('./want/wantdel')
@@ -71,12 +79,24 @@ const updaters = [
     updater: likedel,
   },
   {
+    actionType: `${contractName}::offeraccpt`,
+    updater: offeraccpt,
+  },
+  {
     actionType: `${contractName}::offeradd`,
     updater: offeradd,
   },
   {
     actionType: `${contractName}::offerdecl`,
     updater: offerdecl,
+  },
+  {
+    actionType: `${contractName}::offerdel`,
+    updater: offerdel,
+  },
+  {
+    actionType: `${contractName}::offerrenew`,
+    updater: offerrenew,
   },
   {
     actionType: `${contractName}::stuffadd`,
@@ -89,6 +109,14 @@ const updaters = [
   {
     actionType: `${contractName}::stuffdel`,
     updater: stuffdel,
+  },
+  {
+    actionType: `${contractName}::stuffsent`,
+    updater: stuffsent,
+  },
+  {
+    actionType: `${contractName}::stuffrecv`,
+    updater: stuffrecv,
   },
   {
     actionType: `${contractName}::wantadd`,

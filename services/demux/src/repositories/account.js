@@ -2,37 +2,11 @@ const masterRepository = require('./master')
 
 class accountRepository extends masterRepository {
   
-  async create(id, payload, blockInfo) {
-    const data = {
-      id: id,
-      address: null,
-      avatar: payload.data.avatar,
-      city: payload.data.city,
-      country: payload.data.country,
-      first_name: null,
-      last_name: null,
-      state: payload.data.state,
-      username: payload.data.username,
-      zip: payload.data.zip,
-      created_at: blockInfo.timestamp,
-      updated_at: null,
-      deleted_at: null,
-    }
-    
+  async create(data) {
     return this.db.accounts.insert(data)
   }
 
-  async update(payload, blockInfo) {
-    // Formulate data
-    let data = {
-      avatar: payload.data.avatar,
-      city: payload.data.city,
-      country: payload.data.country,
-      state: payload.data.state,
-      zip: payload.data.zip,
-      updated_at: blockInfo.timestamp
-    }
-
+  async update(username, data) {
     // Validate
     if (data.avatar === "") {
       delete data.avatar
@@ -50,11 +24,11 @@ class accountRepository extends masterRepository {
       delete data.zip
     }
 
-    return await this.db.accounts.update({ username: payload.data.username }, data)
+    return await this.db.accounts.update({ username: username }, data)
   }
 
-  async destroy(payload) {
-    return await this.db.accounts.destroy({ username: payload.data.username })
+  async destroy(username) {
+    return await this.db.accounts.destroy({ username: username })
   }
 }
 

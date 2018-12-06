@@ -3,11 +3,18 @@ const helpers = require('../../helpers')
 
 const wantadd = async (db, payload, blockInfo) => {
   // get the id & account
-  const id = await helpers.getInlineActionResult(payload.inlineActions, 'generateid', 'id')
+  const generateid = await helpers.getInlineByName(payload.inlineActions, 'generateid', true)
   const account = await helpers.getAccountByUsername(db, payload.data.username)
 
   // create the want
-  const want = await new wantRepository(db).create(id, account, payload, blockInfo)
+  const want = await new wantRepository(db).create({
+    id: generateid.id,
+    account_id: account.id,
+    category_id: payload.data.category_id,
+    created_at: blockInfo.timestamp,
+    updated_at: null,
+    deleted_at: null,
+  })
 
   // log it to the console
   helpers.logger(want)

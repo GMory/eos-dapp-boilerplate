@@ -4,20 +4,29 @@ const helpers = require('../../helpers')
 
 const offeradd = async (db, payload, blockInfo) => {
   // get the id
-  const id = await helpers.getInlineActionResult(payload.inlineActions, 'generateid', 'id')
-  const offerStuffIds = await helpers.getInlineAction(payload.inlineActions, 'offerstuffid')
-  
+  const generateid = await helpers.getInlineByName(payload.inlineActions, 'generateid', true)
+  const offerStuff = await helpers.getInlineByName(payload.inlineActions, 'offerstuffid')
+
   // create the offer
-  const offer = await new offerRepository(db).create(id, payload, blockInfo)
+  const offer = await new offerRepository(db).create({
+    id: generateid.id,
+    creator_id: payload.data.creator_id,
+    recipient_id: payload.data.recipient_id,
+    recipient_response: 0,
+    expires_at: payload.data.expires_at,
+    created_at: blockInfo.timestamp,
+    updated_at: null,
+    deleted_at: null,
+  })
 
   // log it to the console
   helpers.logger(offer)
-
+  
   // create offerStuff
-  await new offerStuffRepository(db).create(offerStuffIds, offer)
+  await new offerStuffRepository(db).create(offerStuff, offer)
 
   // log it to the console
-  helpers.logger(offerStuffIds)
+  helpers.logger(offerStuff)
 }
 
 module.exports = offeradd

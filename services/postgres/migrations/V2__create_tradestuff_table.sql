@@ -81,3 +81,15 @@ CREATE TABLE offerstuff (
   created_at TIMESTAMP NULL,
   deleted_at TIMESTAMP NULL
 );
+
+CREATE TABLE trades (
+  id SERIAL PRIMARY KEY,
+  offer_id INT NOT NULL,
+  creator_stuff_sent BOOLEAN NOT NULL,
+  recipient_stuff_sent BOOLEAN NOT NULL,
+  creator_stuff_received BOOLEAN NOT NULL,
+  recipient_stuff_received BOOLEAN NOT NULL,
+  completed_at TIMESTAMP NULL,
+  created_at TIMESTAMP NULL,
+  updated_at  TIMESTAMP NULL
+);

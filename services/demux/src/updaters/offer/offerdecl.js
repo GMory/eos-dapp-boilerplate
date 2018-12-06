@@ -4,16 +4,17 @@ const helpers = require('../../helpers')
 
 const offerdecl = async (db, payload, blockInfo) => {
   // decline the offer
-  await new offerRepository(db).decline(payload, blockInfo)
+  await new offerRepository(db).decline(payload.data.offer_id, {
+    recipient_response: 2,
+    updated_at: blockInfo.timestamp
+  })
   
   // delete offer
   const offer = await helpers.getInlineByName(payload.inlineActions, 'offerdel', true)
-  helpers.logger(offer)
   await new offerRepository(db).destroy(offer.vOfferIds) // need to return first of offer array here (TODO fix)
 
   // delete offerstuff
   const offerStuff = await helpers.getInlineByName(payload.inlineActions, 'offerstufdel', true)
-  helpers.logger(offerStuff)
   await new offerStuffRepository(db).destroy(offerStuff.vOfferStuffIds)
 
   // log it to the console
