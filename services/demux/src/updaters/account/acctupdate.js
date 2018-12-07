@@ -1,4 +1,6 @@
 const accountRepository = require('../../repositories/account')
+const offerRepository = require('../../repositories/offer')
+const offerStuffRepository = require('../../repositories/offerStuff')
 const helpers = require('../../helpers')
 
 const acctupdate = async (db, payload, blockInfo) => {
@@ -12,8 +14,21 @@ const acctupdate = async (db, payload, blockInfo) => {
     updated_at: blockInfo.timestamp
   })
 
+  // delete offers if it exists
+  const offersToDelete = await helpers.getInlineByName(payload.inlineActions, 'offerdel', true)
+  if (offersToDelete) {
+    await new offerRepository(db).destroy(offersToDelete.vOfferIds)
+
+  }
+  
+  // delete offerstuff if it exists
+  const offerStuff = await helpers.getInlineByName(payload.inlineActions, 'offerstufdel', true)
+  if (offerStuff) {
+    await new offerStuffRepository(db).destroy(offerStuff.vOfferStuffIds)
+  }
+  
   // log it to the console
-  helpers.logger(account)
+  helpers.logger("Account updated")
 }
 
 module.exports = acctupdate

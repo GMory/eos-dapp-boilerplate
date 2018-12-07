@@ -5,7 +5,7 @@ const helpers = require('../../helpers')
 const stuffrecv = async (db, payload, blockInfo) => {
   // instantiate our data
   let data = {
-    updated_at = blockInfo.timestamp
+    updated_at: blockInfo.timestamp
   }
   
   // get the account
