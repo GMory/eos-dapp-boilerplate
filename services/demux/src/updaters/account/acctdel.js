@@ -21,7 +21,6 @@ const acctdel = async (db, payload) => {
   const offersToDelete = await helpers.getInlineByName(payload.inlineActions, 'offerdel', true)
   if (offersToDelete) {
     await new offerRepository(db).destroy(offersToDelete.vOfferIds)
-
   }
 
   // delete offerstuff if it exists
