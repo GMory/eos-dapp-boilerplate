@@ -17,9 +17,9 @@ const acctadd = async (db, payload, blockInfo) => {
     state: payload.data.state,
     username: payload.data.username,
     zip: payload.data.zip,
-    created_at: blockInfo.timestamp,
-    updated_at: null,
-    deleted_at: null,
+    createdAt: blockInfo.timestamp,
+    updatedAt: null,
+    deletedAt: null,
   })
 
   // log it to the console

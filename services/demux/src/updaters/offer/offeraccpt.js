@@ -8,7 +8,7 @@ const offeraccpt = async (db, payload, blockInfo) => {
   // create the offer
   await new offerRepository(db).accept(payload.data.offer_id, {
     recipient_response: 1,
-    updated_at: blockInfo.timestamp
+    updatedAt: blockInfo.timestamp
   })
   
   // create the trade
@@ -21,8 +21,8 @@ const offeraccpt = async (db, payload, blockInfo) => {
     creator_stuff_received: false,
     recipient_stuff_received: false,
     completed_at: null,
-    created_at: blockInfo.timestamp,
-    updated_at: null,
+    createdAt: blockInfo.timestamp,
+    updatedAt: null,
   })
   
   // update the stuff
@@ -36,7 +36,7 @@ const offeraccpt = async (db, payload, blockInfo) => {
     name: stuffToUpdate.updates.name,
     status: stuffToUpdate.updates.status,
     value: stuffToUpdate.updates.value,
-    updated_at: blockInfo.timestamp
+    updatedAt: blockInfo.timestamp
   })
 
   // log it to the console

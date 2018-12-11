@@ -11,9 +11,9 @@ const likeadd = async (db, payload, blockInfo) => {
     id: generateid.id,
     account_id: account.id,
     stuff_id: payload.data.stuff_id,
-    created_at: blockInfo.timestamp,
-    updated_at: null,
-    deleted_at: null,
+    createdAt: blockInfo.timestamp,
+    updatedAt: null,
+    deletedAt: null,
   })
 
   // log it to the console

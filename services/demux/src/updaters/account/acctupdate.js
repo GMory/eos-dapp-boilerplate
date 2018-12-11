@@ -11,7 +11,7 @@ const acctupdate = async (db, payload, blockInfo) => {
     country: payload.data.country,
     state: payload.data.state,
     zip: payload.data.zip,
-    updated_at: blockInfo.timestamp
+    updatedAt: blockInfo.timestamp
   })
 
   // delete offers if it exists

@@ -5,7 +5,7 @@ const catupdate = async (db, payload, blockInfo) => {
   // update the category
   const category = await new categoryRepository(db).update(payload.data.category_id, {
     name: payload.data.name,
-    updated_at: blockInfo.timestamp
+    updatedAt: blockInfo.timestamp
   })
 
   // log it to the console

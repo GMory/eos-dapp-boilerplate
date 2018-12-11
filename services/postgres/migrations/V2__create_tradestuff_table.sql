@@ -9,41 +9,41 @@ CREATE TABLE accounts (
   state TEXT NULL,
   username TEXT NULL,
   zip TEXT NULL,
-  created_at TIMESTAMP NULL,
-  updated_at TIMESTAMP NULL,
-  deleted_at TIMESTAMP NULL
+  createdAt TIMESTAMP NULL,
+  updatedAt TIMESTAMP NULL,
+  deletedAt TIMESTAMP NULL
 );
 
 CREATE TABLE categories (
   id SERIAL PRIMARY KEY,
   name TEXT NULL,
-  created_at TIMESTAMP NULL,
-  updated_at TIMESTAMP NULL,
-  deleted_at TIMESTAMP NULL
+  createdAt TIMESTAMP NULL,
+  updatedAt TIMESTAMP NULL,
+  deletedAt TIMESTAMP NULL
 );
 
 CREATE TABLE conditions (
   id SERIAL PRIMARY KEY,
   name TEXT NULL,
-  created_at TIMESTAMP NULL,
-  updated_at TIMESTAMP NULL,
-  deleted_at TIMESTAMP NULL
+  createdAt TIMESTAMP NULL,
+  updatedAt TIMESTAMP NULL,
+  deletedAt TIMESTAMP NULL
 );
 
 CREATE TABLE likes (
   id SERIAL PRIMARY KEY,
   account_id INT NOT NULL,
   stuff_id INT NOT NULL,
-  created_at TIMESTAMP NULL,
-  deleted_at TIMESTAMP NULL
+  createdAt TIMESTAMP NULL,
+  deletedAt TIMESTAMP NULL
 );
 
 CREATE TABLE wants (
   id SERIAL PRIMARY KEY,
   account_id INT NOT NULL,
   category_id INT NOT NULL,
-  created_at TIMESTAMP NULL,
-  deleted_at TIMESTAMP NULL
+  createdAt TIMESTAMP NULL,
+  deletedAt TIMESTAMP NULL
 );
 
 CREATE TABLE stuff (
@@ -58,9 +58,9 @@ CREATE TABLE stuff (
   status INT NOT NULL,
   value FLOAT(8) NOT NULL,
   inactive_at TIMESTAMP NULL,
-  created_at TIMESTAMP NULL,
-  updated_at TIMESTAMP NULL,
-  deleted_at TIMESTAMP NULL
+  createdAt TIMESTAMP NULL,
+  updatedAt TIMESTAMP NULL,
+  deletedAt TIMESTAMP NULL
 );
 
 CREATE TABLE offers (
@@ -68,18 +68,18 @@ CREATE TABLE offers (
   creator_id INT NOT NULL,
   recipient_id INT NOT NULL,
   recipient_response INT NOT NULL,
-  expires_at TIMESTAMP NULL,
-  created_at TIMESTAMP NULL,
-  updated_at TIMESTAMP NULL,
-  deleted_at TIMESTAMP NULL
+  expiresAt TIMESTAMP NULL,
+  createdAt TIMESTAMP NULL,
+  updatedAt TIMESTAMP NULL,
+  deletedAt TIMESTAMP NULL
 );
 
 CREATE TABLE offerstuff (
   id SERIAL PRIMARY KEY,
   offer_id INT NOT NULL,
   stuff_id INT NOT NULL,
-  created_at TIMESTAMP NULL,
-  deleted_at TIMESTAMP NULL
+  createdAt TIMESTAMP NULL,
+  deletedAt TIMESTAMP NULL
 );
 
 CREATE TABLE trades (
@@ -90,6 +90,6 @@ CREATE TABLE trades (
   creator_stuff_received BOOLEAN NOT NULL,
   recipient_stuff_received BOOLEAN NOT NULL,
   completed_at TIMESTAMP NULL,
-  created_at TIMESTAMP NULL,
-  updated_at  TIMESTAMP NULL
+  createdAt TIMESTAMP NULL,
+  updatedAt  TIMESTAMP NULL
 );

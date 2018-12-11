@@ -14,7 +14,7 @@ const stuffupdate = async (db, payload, blockInfo) => {
     name: payload.data.updates.name,
     status: payload.data.updates.status,
     value: payload.data.updates.value,
-    updated_at: blockInfo.timestamp
+    updatedAt: blockInfo.timestamp
   })
 
   // delete offers if it exists

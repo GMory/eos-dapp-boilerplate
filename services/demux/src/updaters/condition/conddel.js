@@ -18,7 +18,7 @@ const conddel = async (db, payload, blockInfo) => {
       name: stuffToUpdate.updates.name,
       status: stuffToUpdate.updates.status,
       value: stuffToUpdate.updates.value,
-      updated_at: blockInfo.timestamp
+      updatedAt: blockInfo.timestamp
     })
   }
 
