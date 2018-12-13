@@ -1,4 +1,5 @@
 const accountRepository = require('../../repositories/account')
+const privateDataRepository = require('../../repositories/privateData')
 const helpers = require('../../helpers')
 
 const acctadd = async (db, payload, blockInfo) => {
