@@ -9,9 +9,9 @@ const condadd = async (db, payload, blockInfo) => {
   const condition = await new conditionRepository(db).create({
     id: generateid.id,
     name: payload.data.name,
-    createdAt: blockInfo.timestamp,
-    updatedAt: null,
-    deletedAt: null,
+    createdat: blockInfo.timestamp,
+    updatedat: null,
+    deletedat: null,
   })
 
   // log it to the console

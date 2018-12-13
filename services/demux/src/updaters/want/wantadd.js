@@ -11,9 +11,9 @@ const wantadd = async (db, payload, blockInfo) => {
     id: generateid.id,
     account_id: account.id,
     category_id: payload.data.category_id,
-    createdAt: blockInfo.timestamp,
-    updatedAt: null,
-    deletedAt: null,
+    createdat: blockInfo.timestamp,
+    updatedat: null,
+    deletedat: null,
   })
 
   // log it to the console

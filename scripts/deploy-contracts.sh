@@ -3,16 +3,15 @@
 #!/bin/bash
 
 cleos='docker exec -i eoslocal_eosio cleos -u http://eosio:8888 --wallet-url http://wallet:8901'
-directory_of_contract_to_deploy="//opt/application/contracts/tradestuff"
+directory_of_contract_to_deploy="contracts/tradestuff"
+TS_ACCOUNT="tradestuff"
+U1_ACCOUNT="user1"
+U2_ACCOUNT="user2"
+U3_ACCOUNT="user3"
+U4_ACCOUNT="user4"
 
 function create_contract_accounts () {
   echo "Creating testing accounts"
-
-  TS_ACCOUNT="tradestuff"
-  U1_ACCOUNT="user1"
-  U2_ACCOUNT="user2"
-  U3_ACCOUNT="user3"
-  U4_ACCOUNT="user4"
 
   PRIVATEKEY="5K4MHQN7sPdEURaxzjCnbynUwkEKRJzs8zVUf24ofaFiZNK815J"
   PUBLICKEY="EOS5k6Jht1epqZ2mnRLFVDXDTosaTneR6xFhvenVLiFfz5Ue125dL"

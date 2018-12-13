@@ -18,9 +18,9 @@ const stuffadd = async (db, payload, blockInfo) => {
     name: payload.data.name,
     status: 1,
     value: payload.data.value,
-    createdAt: blockInfo.timestamp,
-    updatedAt: null,
-    deletedAt: null,
+    createdat: blockInfo.timestamp,
+    updatedat: null,
+    deletedat: null,
   })
 
   // log it to the console

@@ -6,7 +6,7 @@ const offerdecl = async (db, payload, blockInfo) => {
   // decline the offer
   await new offerRepository(db).decline(payload.data.offer_id, {
     recipient_response: 2,
-    updatedAt: blockInfo.timestamp
+    updatedat: blockInfo.timestamp
   })
   
   // delete offer

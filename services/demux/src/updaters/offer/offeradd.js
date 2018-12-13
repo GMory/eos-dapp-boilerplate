@@ -13,10 +13,10 @@ const offeradd = async (db, payload, blockInfo) => {
     creator_id: payload.data.creator_id,
     recipient_id: payload.data.recipient_id,
     recipient_response: 0,
-    expiresAt: payload.data.expiresAt,
-    createdAt: blockInfo.timestamp,
-    updatedAt: null,
-    deletedAt: null,
+    expiresat: payload.data.expiresat,
+    createdat: blockInfo.timestamp,
+    updatedat: null,
+    deletedat: null,
   })
 
   // log it to the console

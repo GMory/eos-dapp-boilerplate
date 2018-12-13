@@ -5,7 +5,7 @@ const condupdate = async (db, payload, blockInfo) => {
   // update the condition
   const condition = await new conditionRepository(db).update(payload.data.condition_id, {
     name: payload.data.name,
-    updatedAt: blockInfo.timestamp
+    updatedat: blockInfo.timestamp
   })
 
   // log it to the console
