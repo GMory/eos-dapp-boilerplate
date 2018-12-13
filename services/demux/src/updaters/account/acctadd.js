@@ -8,12 +8,9 @@ const acctadd = async (db, payload, blockInfo) => {
   // create the account
   const account = await new accountRepository(db).create({
     id: generateid.id,
-    address: null,
     avatar: payload.data.avatar,
     city: payload.data.city,
     country: payload.data.country,
-    first_name: null,
-    last_name: null,
     state: payload.data.state,
     username: payload.data.username,
     zip: payload.data.zip,
@@ -21,6 +18,8 @@ const acctadd = async (db, payload, blockInfo) => {
     updatedAt: null,
     deletedAt: null,
   })
+
+  await new privateDataRepository(db).stampId(payload.data.username, generateid.id)
 
   // log it to the console
   helpers.logger(account)
