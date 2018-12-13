@@ -2,6 +2,7 @@ const accountRepository = require('../../repositories/account')
 const likeRepository = require('../../repositories/like')
 const offerRepository = require('../../repositories/offer')
 const offerStuffRepository = require('../../repositories/offerStuff')
+const privateDataRepository = require('../../repositories/privateData')
 const stuffRepository = require('../../repositories/stuff')
 const wantRepository = require('../../repositories/want')
 const helpers = require('../../helpers')
@@ -40,6 +41,9 @@ const acctdel = async (db, payload) => {
   if (likes) {
     await new likeRepository(db).destroy(likes.vLikeIds)
   }
+
+  // delete private info
+  await new privateDataRepository(db).destroy(payload.data.username)
 
   // log it to the console
   helpers.logger(account)
