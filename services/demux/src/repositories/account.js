@@ -27,8 +27,8 @@ class accountRepository extends masterRepository {
     return await this.db.accounts.update({ username: username }, data)
   }
 
-  async destroy(username) {
-    return await this.db.accounts.destroy({ username: username })
+  async destroy(username, time) {
+    return await this.db.accounts.update({ username: username }, {deletedat: time})
   }
 }
 

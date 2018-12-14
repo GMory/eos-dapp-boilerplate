@@ -19,7 +19,7 @@ const stuffadd = async (db, payload, blockInfo) => {
     status: 1,
     value: payload.data.value,
     createdat: blockInfo.timestamp,
-    updatedat: null,
+    updatedat: blockInfo.timestamp,
     deletedat: null,
   })
 

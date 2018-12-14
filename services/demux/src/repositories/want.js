@@ -6,9 +6,9 @@ class wantRepository extends masterRepository {
     return this.db.wants.insert(data)
   }
 
-  async destroy(ids) {
+  async destroy(ids, time) {
     return await ids.forEach((id) => {
-      this.db.wants.destroy({ id: id })
+      this.db.wants.update({ id: id }, {deletedat: time})
     })
   }
 }

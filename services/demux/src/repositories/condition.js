@@ -15,8 +15,8 @@ class conditionRepository extends masterRepository {
     return await this.db.conditions.update({ id: id }, data)
   }
 
-  async destroy(id) {
-    return await this.db.conditions.destroy({ id: id })
+  async destroy(id, time) {
+    return await this.db.conditions.update({ id: id }, {deletedat: time})
   }
 }
 

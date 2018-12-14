@@ -10,7 +10,7 @@ const condadd = async (db, payload, blockInfo) => {
     id: generateid.id,
     name: payload.data.name,
     createdat: blockInfo.timestamp,
-    updatedat: null,
+    updatedat: blockInfo.timestamp,
     deletedat: null,
   })
 

@@ -16,16 +16,14 @@ const acctadd = async (db, payload, blockInfo) => {
     username: payload.data.username,
     zip: payload.data.zip,
     createdat: blockInfo.timestamp,
-    updatedat: null,
+    updatedat: blockInfo.timestamp,
     deletedat: null,
   })
 
-  const privateInfo = {
+  await new privateDataRepository(db).update(payload.data.username, {
     account_id: generateid.id,
     create_transaction_id: payload.transactionId
-  }
-
-  await new privateDataRepository(db).stampId(payload.data.username, privateInfo)
+  })
 
   // log it to the console
   helpers.logger(account)

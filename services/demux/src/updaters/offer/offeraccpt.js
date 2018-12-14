@@ -20,9 +20,9 @@ const offeraccpt = async (db, payload, blockInfo) => {
     recipient_stuff_sent: false,
     creator_stuff_received: false,
     recipient_stuff_received: false,
-    completed_at: null,
+    completedat: null,
     createdat: blockInfo.timestamp,
-    updatedat: null,
+    updatedat: blockInfo.timestamp,
   })
   
   // update the stuff
@@ -38,6 +38,24 @@ const offeraccpt = async (db, payload, blockInfo) => {
     value: stuffToUpdate.updates.value,
     updatedat: blockInfo.timestamp
   })
+
+  // delete likes if it exists
+  const likes = await helpers.getInlineByName(payload.inlineActions, 'likedel', true)
+  if (likes) {
+    await new likeRepository(db).destroy(likes.vLikeIds, blockInfo.timestamp)
+  }
+
+  // delete offers if it exists
+  const offersToDelete = await helpers.getInlineByName(payload.inlineActions, 'offerdel', true)
+  if (offersToDelete) {
+    await new offerRepository(db).destroy(offersToDelete.vOfferIds, blockInfo.timestamp)
+  }
+
+  // delete offerstuff if it exists
+  const offerStuff = await helpers.getInlineByName(payload.inlineActions, 'offerstufdel', true)
+  if (offerStuff) {
+    await new offerStuffRepository(db).destroy(offerStuff.vOfferStuffIds, blockInfo.timestamp)
+  }
 
   // log it to the console
   helpers.logger('Offer Accepted')

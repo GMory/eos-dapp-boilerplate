@@ -11,21 +11,21 @@ const stuffdel = async (db, payload) => {
   // delete offers if it exists
   const offersToDelete = await helpers.getInlineByName(payload.inlineActions, 'offerdel', true)
   if (offersToDelete) {
-    await new offerRepository(db).destroy(offersToDelete.vOfferIds)
+    await new offerRepository(db).destroy(offersToDelete.vOfferIds, blockInfo.timestamp)
   }
 
   // delete offerstuff if it exists
   const batchesOfOfferStuff = await helpers.getInlineByName(payload.inlineActions, 'offerstufdel')
   if (batchesOfOfferStuff) {
     await batchesOfOfferStuff.forEach(offerStuff => {
-      new offerStuffRepository(db).destroy(offerStuff.vOfferStuffIds)
+      new offerStuffRepository(db).destroy(offerStuff.vOfferStuffIds, blockInfo.timestamp)
     });
   }
 
   // delete likes if it exists
   const likes = await helpers.getInlineByName(payload.inlineActions, 'likedel', true)
   if (likes) {
-    await new likeRepository(db).destroy(likes.vLikeIds)
+    await new likeRepository(db).destroy(likes.vLikeIds, blockInfo.timestamp)
   }
 
   // log it to the console

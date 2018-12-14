@@ -5,12 +5,12 @@ const helpers = require('../../helpers')
 
 const catdel = async (db, payload, blockInfo) => {
   // delete the category
-  const category = await new categoryRepository(db).destroy(payload.data.category_id)
+  const category = await new categoryRepository(db).destroy(payload.data.category_id, blockInfo.timestamp)
 
   // delete wants if it exists
   const wants = await helpers.getInlineByName(payload.inlineActions, 'wantdel', true)
   if (wants) {
-    await new wantRepository(db).destroy(wants.vWantIds)
+    await new wantRepository(db).destroy(wants.vWantIds, blockInfo.timestamp)
   }
 
   // update stuff if it exists

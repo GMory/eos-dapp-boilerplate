@@ -17,9 +17,9 @@ class offerRepository extends masterRepository {
     return await this.db.offers.update({ id: id }, data)
   }
 
-  async destroy(ids) {
+  async destroy(ids, time) {
     return await ids.forEach((id) => {
-      this.db.offers.destroy({ id: id })
+      this.db.offers.update({ id: id }, {deletedat: time})
     })
   }
 }

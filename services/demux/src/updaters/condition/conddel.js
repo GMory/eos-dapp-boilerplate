@@ -4,7 +4,7 @@ const helpers = require('../../helpers')
 
 const conddel = async (db, payload, blockInfo) => {
   // delete the condition
-  const condition = await new conditionRepository(db).destroy(payload.data.condition_id)
+  const condition = await new conditionRepository(db).destroy(payload.data.condition_id, blockInfo.timestamp)
 
   // update stuff if it exists
   const stuffToUpdate = await helpers.getInlineByName(payload.inlineActions, 'stuffupdate', true)

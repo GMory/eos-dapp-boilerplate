@@ -38,9 +38,9 @@ class stuffRepository extends masterRepository {
     })
   }
 
-  async destroy(ids) {
+  async destroy(ids, time) {
     return await ids.forEach((id) => {
-      this.db.stuff.destroy({ id: id })
+      this.db.stuff.update({ id: id }, {deletedat: time})
     })
   }
 }

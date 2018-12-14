@@ -27,9 +27,11 @@ const stuffsent = async (db, payload, blockInfo) => {
     data.recipient_stuff_sent = true
   }
   
+  // update the trade with data
+  await new tradeRepository(db).stuffsent(payload.data.trade_id, data)
+
   // check if stuff was updated (meaning the trade is complete)
   const stuffToUpdate = await helpers.getInlineByName(payload.inlineActions, 'stuffupdate', true)
-  
   if (stuffToUpdate) {
     // add completed at to data
     data.completed_at = blockInfo.timestamp
@@ -45,10 +47,12 @@ const stuffsent = async (db, payload, blockInfo) => {
       value: stuffToUpdate.updates.value,
       updatedat: blockInfo.timestamp
     })
+
+    // update the trade as complete
+    await new tradeRepository(db).complete(payload.data.trade_id, {completedat: blockInfo.timestamp})
   }
 
-  // update the trade with data
-  await new tradeRepository(db).stuffsent(payload.data.trade_id, data)
+  
 
   // log it to the console
   helpers.logger("Stuff sent")

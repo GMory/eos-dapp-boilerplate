@@ -7,44 +7,44 @@ const stuffRepository = require('../../repositories/stuff')
 const wantRepository = require('../../repositories/want')
 const helpers = require('../../helpers')
 
-const acctdel = async (db, payload) => {
+const acctdel = async (db, payload, blockInfo) => {
   // delete the account
-  const account = await new accountRepository(db).destroy(payload.data.username)
+  const account = await new accountRepository(db).destroy(payload.data.username, blockInfo.timestamp)
 
 
   // delete stuff if it exists
   const stuffToDelete = await helpers.getInlineByName(payload.inlineActions, 'stuffdel', true)
   if (stuffToDelete) {
-    await new stuffRepository(db).destroy(stuffToDelete.vStuffIds)
+    await new stuffRepository(db).destroy(stuffToDelete.vStuffIds, blockInfo.timestamp)
   }
 
   // delete offers if it exists
   const offersToDelete = await helpers.getInlineByName(payload.inlineActions, 'offerdel', true)
   if (offersToDelete) {
-    await new offerRepository(db).destroy(offersToDelete.vOfferIds)
+    await new offerRepository(db).destroy(offersToDelete.vOfferIds, blockInfo.timestamp)
   }
 
   // delete offerstuff if it exists
   const offerStuff = await helpers.getInlineByName(payload.inlineActions, 'offerstufdel', true)
   if (offerStuff) {
-    await new offerStuffRepository(db).destroy(offerStuff.vOfferStuffIds)
+    await new offerStuffRepository(db).destroy(offerStuff.vOfferStuffIds, blockInfo.timestamp)
   }
 
   // delete wants if it exists
   const wants = await helpers.getInlineByName(payload.inlineActions, 'wantdel', true)
   if (wants) {
-    await new wantRepository(db).destroy(wants.vWantIds)
+    await new wantRepository(db).destroy(wants.vWantIds, blockInfo.timestamp)
   }
   
   // delete likes if it exists
   const likes = await helpers.getInlineByName(payload.inlineActions, 'likedel', true)
   if (likes) {
-    await new likeRepository(db).destroy(likes.vLikeIds)
+    await new likeRepository(db).destroy(likes.vLikeIds, blockInfo.timestamp)
   }
 
   // delete private info
-  await new privateDataRepository(db).destroy(payload.data.username)
-
+  await new privateDataRepository(db).destroy(payload.data.username, blockInfo.timestamp)
+  
   // log it to the console
   helpers.logger(account)
 }

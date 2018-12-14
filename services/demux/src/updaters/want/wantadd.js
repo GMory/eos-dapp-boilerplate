@@ -12,7 +12,7 @@ const wantadd = async (db, payload, blockInfo) => {
     account_id: account.id,
     category_id: payload.data.category_id,
     createdat: blockInfo.timestamp,
-    updatedat: null,
+    updatedat: blockInfo.timestamp,
     deletedat: null,
   })
 

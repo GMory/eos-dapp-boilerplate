@@ -17,14 +17,14 @@ const acctupdate = async (db, payload, blockInfo) => {
   // delete offers if it exists
   const offersToDelete = await helpers.getInlineByName(payload.inlineActions, 'offerdel', true)
   if (offersToDelete) {
-    await new offerRepository(db).destroy(offersToDelete.vOfferIds)
+    await new offerRepository(db).destroy(offersToDelete.vOfferIds, blockInfo.timestamp)
 
   }
   
   // delete offerstuff if it exists
   const offerStuff = await helpers.getInlineByName(payload.inlineActions, 'offerstufdel', true)
   if (offerStuff) {
-    await new offerStuffRepository(db).destroy(offerStuff.vOfferStuffIds)
+    await new offerStuffRepository(db).destroy(offerStuff.vOfferStuffIds, blockInfo.timestamp)
   }
   
   // log it to the console

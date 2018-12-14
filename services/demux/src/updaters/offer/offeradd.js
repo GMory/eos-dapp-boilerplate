@@ -15,7 +15,7 @@ const offeradd = async (db, payload, blockInfo) => {
     recipient_response: 0,
     expiresat: payload.data.expiresat,
     createdat: blockInfo.timestamp,
-    updatedat: null,
+    updatedat: blockInfo.timestamp,
     deletedat: null,
   })
 

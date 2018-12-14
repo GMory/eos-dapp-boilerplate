@@ -15,8 +15,8 @@ class categoryRepository extends masterRepository {
     return await this.db.categories.update({ id: id }, data)
   }
 
-  async destroy(id) {
-    return await this.db.categories.destroy({ id: id })
+  async destroy(id, time) {
+    return await this.db.categories.update({ id: id }, {deletedat: time})
   }
 }
 

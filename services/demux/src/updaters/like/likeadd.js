@@ -12,7 +12,7 @@ const likeadd = async (db, payload, blockInfo) => {
     account_id: account.id,
     stuff_id: payload.data.stuff_id,
     createdat: blockInfo.timestamp,
-    updatedat: null,
+    updatedat: blockInfo.timestamp,
     deletedat: null,
   })
 

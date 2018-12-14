@@ -6,9 +6,9 @@ class likeRepository extends masterRepository {
     return this.db.likes.insert(data)
   }
 
-  async destroy(ids) {
+  async destroy(ids, time) {
     return await ids.forEach((id) => {
-      this.db.likes.destroy({ id: id })
+      this.db.likes.update({ id: id }, {deletedat: time})
     })
   }
 }
