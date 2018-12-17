@@ -1,7 +1,7 @@
 const likeRepository = require('../../repositories/like')
 const helpers = require('../../helpers')
 
-const likedel = async (db, payload) => {
+const likedel = async (db, payload, blockInfo) => {
   // create the like
   await new likeRepository(db).destroy(payload.data.vLikeIds, blockInfo.timestamp)
 

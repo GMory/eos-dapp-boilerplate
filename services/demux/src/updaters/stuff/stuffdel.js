@@ -4,7 +4,7 @@ const offerRepository = require('../../repositories/offer')
 const offerStuffRepository = require('../../repositories/offerStuff')
 const helpers = require('../../helpers')
 
-const stuffdel = async (db, payload) => {
+const stuffdel = async (db, payload, blockInfo) => {
   // create the stuff
   await new stuffRepository(db).destroy(payload.data.vStuffIds)
 
