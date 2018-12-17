@@ -16,6 +16,10 @@ class tradeRepository extends masterRepository {
   async complete(id, data) {
     return await this.db.trades.update({ id: id }, data)
   }
+
+  async destroy(id, data) {
+    return await this.db.trades.update({ id: id }, data)
+  }
 }
 
 module.exports = tradeRepository

@@ -8,5 +8,6 @@ CREATE TABLE private_account_data (
   last_updated_by TEXT NULL DEFAULT CURRENT_USER,
   last_update_date TIMESTAMP WITHOUT TIME ZONE  DEFAULT CURRENT_TIMESTAMP,
   account_id INT NULL,
-  address TEXT NOT NULL
+  address TEXT NOT NULL,
+  deletedat TIMESTAMP NULL
 );

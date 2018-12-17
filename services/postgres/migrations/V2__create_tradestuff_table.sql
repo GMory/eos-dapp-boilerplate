@@ -88,7 +88,8 @@ CREATE TABLE trades (
   recipient_stuff_received BOOLEAN NOT NULL,
   completedat TIMESTAMP NULL,
   createdat TIMESTAMP NULL,
-  updatedat  TIMESTAMP NULL
+  updatedat  TIMESTAMP NULL,
+  deletedat TIMESTAMP NULL
 );
 
 CREATE TABLE transactions (
