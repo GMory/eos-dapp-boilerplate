@@ -73,7 +73,12 @@ export class MongoActionReader extends AbstractActionReader {
       const inlineTrxsIds = inlineTrxs.map((trx) => trx.payload.transactionId)
       const transactionTraces = await this.mongodb!
         .collection("transaction_traces")
-        .find({id: {$in: inlineTrxsIds} })
+        .find({
+            $and:[
+                {id: {$in: inlineTrxsIds}},
+                {block_num: block.blockInfo.blockNumber}
+            ]
+        })
         .toArray()
       block.addInlineActions(transactionTraces)
     }
